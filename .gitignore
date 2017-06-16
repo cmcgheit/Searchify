@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Compiled source #
 ###################
 *.com
@@ -68,6 +69,8 @@ xcuserdata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 
+=======
+>>>>>>> 9b394d097cd39a6a0255202571013df273b4f8ee
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
@@ -133,6 +136,9 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+<<<<<<< HEAD
 
 Keys.plist
 Key.plist
+=======
+>>>>>>> 9b394d097cd39a6a0255202571013df273b4f8ee
