@@ -8,7 +8,7 @@ Includes:
 ### Things to Update 
 
 - [x] add [Spotify SDK](https://github.com "Spotify SDK")
-:hourglass: Button/UI Changes 8 *waiting for Chameleon to update Themes/Buttons*
+- :hourglass: Button/UI Changes 8 *waiting for Chameleon to update Themes/Buttons*
 - [ ] Add [Instructions](https://github.com/ephread/Instructions "Instructions")
 - [ ] add search with [SoundcloudSDK](https://github.com/delannoyk/SoundcloudSDK "SoundcloudSDK") *Waiting for credentials from Soundcloud to continue setup*
 
