@@ -42,8 +42,13 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    
         self.navigationItem.title = "Searchify"
+        // Chameleon Settings
         self.navigationController?.hidesNavigationBarHairline = true
+        view.backgroundColor = FlatWhite()
+        self.setStatusBarStyle(UIStatusBarStyleContrast)
         
 //        Leave this if you want to call certain search when app loads
 //        callAlamo(url: searchURL)

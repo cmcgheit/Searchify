@@ -8,6 +8,7 @@ target 'Searchify' do
   # Pods for Searchify
   pod 'Alamofire', '~> 4.4'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+  pod 'Soundcloud'
 
   target 'SearchifyTests' do
     inherit! :search_paths
