@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Compiled source #
 ###################
 *.com
@@ -140,5 +139,4 @@ fastlane/test_output
 Constants.swift
 Keys.plist
 Key.plist
-=======
->>>>>>> 9b394d097cd39a6a0255202571013df273b4f8ee
+
