@@ -1,17 +1,19 @@
 //
-//  AudioVC.swift
+//  MusicPlayerViewController.swift
 //  Searchify
 //
-//  Created by C McGhee on 5/3/17.
+//  Created by C McGhee on 5/3/17
 //  Copyright © 2017 Fam Design. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import Alamofire
 import AVFoundation
+import ChameleonFramework
 
+var player = AVAudioPlayer()
 
-class AudioVC : UIViewController {
+class MusicPlayerViewController: UIViewController {
     
     var image = UIImage()
     var mainSongTitle = String()
@@ -52,17 +54,17 @@ class AudioVC : UIViewController {
     func play(url: URL) {
         
         do {
-        
-        player = try AVAudioPlayer(contentsOf: url)
+            
+            player = try AVAudioPlayer(contentsOf: url)
             player.prepareToPlay()
             player.play()
         }
         catch{
             print(error)
+        }
     }
-  }
     
-
+    
     @IBAction func pauseplay(_ sender: Any) {
         if player.isPlaying {
             player.pause()

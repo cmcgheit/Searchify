@@ -7,128 +7,69 @@
 //
 
 import UIKit
-import Alamofire
-import AVFoundation
-import ChameleonFramework
+import IGListKit
 
-var player = AVAudioPlayer()
-
-struct post {
-    let mainImage : UIImage!
-    let name : String!
-    let previewURL : String!
+class ViewController: UIViewController, ListAdapterDataSource {
     
-}
-
-class TableViewController: UITableViewController, UISearchBarDelegate {
+    @IBOutlet var searchCollectionView: UICollectionView!
     
-    @IBOutlet var searchBar: UISearchBar!
+    let tracksData = Track()
     
-    var posts = [post]()
+    var data: [Any] = []
     
-    var searchURL = String()
+    lazy var adapter: ListAdapter = {
+        return ListAdapter(updater: ListAdapterUpdater(), viewController: self)
+    }()
     
-    typealias JSONStandard = [String: AnyObject]
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let keywords = searchBar.text
-        let finalKeywords = keywords?.replacingOccurrences(of: " ", with: "+")
-        
-        searchURL = "https://api.spotify.com/v1/search?q=\(finalKeywords!)&type=track,artist"
-        
-        callAlamo(url: searchURL)
-        self.view.endEditing(true)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        data = tracksData.getData()
+        setupHeader()
         
-    
-        self.navigationItem.title = "Searchify"
-        // Chameleon Settings
-        self.navigationController?.hidesNavigationBarHairline = true
-        view.backgroundColor = FlatWhite()
-        self.setStatusBarStyle(UIStatusBarStyleContrast)
-        
-//        Leave this if you want to call certain search when app loads
-//        callAlamo(url: searchURL)
     }
     
-    func callAlamo (url: String) {
-        Alamofire.request(url).responseJSON(completionHandler: {
-            response in
-            self.parseData(JSONData: response.data!)
-            
-        })
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        adapter.collectionView = searchCollectionView
+        adapter.dataSource = self
     }
     
-    func parseData(JSONData: Data) {
-        do {
-            var readableJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as! JSONStandard
-            if let tracks = readableJSON["tracks"] as? JSONStandard{
-                if let items = tracks["items"] as? [JSONStandard] {
-                    for i in 0..<items.count{
-                        let item = items[i]
-                        print(item)
-                        
-            let name  = item["name"] as! String
-                let previewURL = item["preview_url"] as! String
-                if let album = item["album"] as? JSONStandard {
-                    if let images = album["images"] as? [JSONStandard] {
-                        let imageData = images[0]
-                        let mainImageURL = URL(string: imageData["url"] as! String)
-                        let mainImageData = NSData(contentsOf: mainImageURL!)
-                        
-                        let mainImage = UIImage(data: mainImageData! as Data)
-                        
-                        posts.append(post.init(mainImage: mainImage, name: name, previewURL: previewURL))
-                        self.tableView.reloadData()
-                    }
-                }
-            
-            }
+
+    
+    // MARK: - Section Header
+    func setupHeader(){
+        let bounds = navigationController?.navigationBar.bounds
+        let headerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: (bounds?.width)!, height: (bounds?.height)!))
+        
+        headerLabel.text = "What's New"
+        headerLabel.textColor = .white
+        headerLabel.font = headerLabel.font.withSize(20)
+        navigationItem.titleView = headerLabel
+        
+    }
+    public func objects(for listAdapter: ListAdapter) -> [ListDiffable]{
+        return data as! [ListDiffable]
+    }
+    
+    public func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController{
+        switch object{
+        case is HeaderData:
+            return HeaderSectionController()
+        case is TracksData:
+            return TrackSectionController()
+        case is AlbumView:
+            return AlbumPreviewSectionController()
+        case is String:
+            return AlbumSectionController()
+        default:
+            return ButtonSectionController()
         }
-    }
-}
-        catch {
-            print(error)
-        }
-    }
-            
-            override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return posts.count
-            }
-            
-            override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-            
-           let mainImageView = cell?.viewWithTag(2) as! UIImageView
-        
-            mainImageView.image = posts[indexPath.row].mainImage
-    
-            let mainLabel = cell?.viewWithTag(1) as! UILabel
-        
-            mainLabel.text = posts[indexPath.row].name
-            
-            return cell!
-        
-            }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let indexPath = self.tableView.indexPathForSelectedRow?.row
-        
-        let vc = segue.destination as! AudioVC
-        
-        vc.image = posts[indexPath!].mainImage
-        vc.mainSongTitle = posts[indexPath!].name
-        vc.mainPreviewURL = posts[indexPath!].previewURL
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    public func emptyView(for listAdapter: ListAdapter) -> UIView?{
+        return nil
     }
 
-
+    
 }

@@ -137,7 +137,7 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 
-
+Constants.swift
 Keys.plist
 Key.plist
 =======

@@ -25,6 +25,7 @@
 			<string>com.searchify.spotify-auth</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>com.cloudrail.example:/auth</string>
 				<string>Searchify</string>
 			</array>
 		</dict>
@@ -55,6 +56,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<true/>
+	<false/>
 </dict>
 </plist>
