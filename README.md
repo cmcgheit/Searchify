@@ -1,6 +1,6 @@
 # Searchify
 
-Revamped my app to be look similar to the Tidal App. Search Spotify songs and albums on iOS. Plays preview of song once selected.
+Revamped my app to look similar to the Tidal App. Search Spotify songs and albums on iOS. Plays preview of song once selected.
 
 App icon by [FanFanych](https://dribbble.com/FanFanych) [here](https://dribbble.com/shots/2946796-Fast-music-search)
 
