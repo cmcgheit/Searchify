@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import AVFoundation
 import ChameleonFramework
-import CloudrailSI
+// import CloudrailSI
 
 struct post {
     let mainImage: UIImage!
@@ -28,31 +28,31 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var searchURL = String()
     
-    var service: VideoProtocol?
-    var vimeo: Vimeo?
-    var youtube: YouTube?
+    // var service: VideoProtocol?
+    // var vimeo: Vimeo?
+    // var youtube: YouTube?
 
     typealias JSONStandard = [String: AnyObject]
 
     // MARK: - CloudRail Properties
-    func searchVideos() { ((query: String, offset: CLong, limit: CLong)
-        throws -> NSMutableArray).self
-        
-        do {
-            try service?.searchVideosWithQuery("CloudRail", offset: 50, limit: 20)
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
-    func searchVimeo() {
-        service = vimeo
-    }
-    
-    func searchYoutube() {
-        service = youtube
-        youtube?.useAdvancedAuthentication()
-    }
+//    func searchVideos() { ((query: String, offset: CLong, limit: CLong)
+//        throws -> NSMutableArray).self
+//        
+//        do {
+//            try service?.searchVideosWithQuery("CloudRail", offset: 50, limit: 20)
+//        } catch {
+//            print(error.localizedDescription)
+//        }
+//    }
+//    
+//    func searchVimeo() {
+//        service = vimeo
+//    }
+//    
+//    func searchYoutube() {
+//        service = youtube
+//        youtube?.useAdvancedAuthentication()
+//    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let keywords = searchBar.text
@@ -61,8 +61,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchURL = "https://api.spotify.com/v1/search?q=\(finalKeywords!)&type=track,artist"
         
         callAlamo(url: searchURL)
-        searchVimeo()
-        searchYoutube()
+        // searchVimeo()
+        // searchYoutube()
         self.view.endEditing(true)
     }
     
@@ -91,14 +91,14 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //        callAlamo(url: searchURL)
         
         // MARK: CloudRail/Universal Search Properties
-        vimeo = Vimeo.init(clientId: vimeoClientID,
-                           clientSecret: vimeoClientSecret)
+//        vimeo = Vimeo.init(clientId: vimeoClientID,
+//                           clientSecret: vimeoClientSecret)
         
         
-        youtube = YouTube.init(clientId: youTubeClientID,
-                               clientSecret: "",  // will be blank
-            redirectUri: youTubeRedirectURI,
-            state: "AWESOME_STATE")
+//        youtube = YouTube.init(clientId: youTubeClientID,
+//                               clientSecret: "",  // will be blank
+//            redirectUri: youTubeRedirectURI,
+//            state: "AWESOME_STATE")
 
     }
     

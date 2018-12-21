@@ -11,10 +11,10 @@ import IGListKit
 
 final class AlbumsData: NSObject{
     
-    let albumID: Int!
-    var albumImage: UIImage
-    var title: String
-    var artist: String
+    public var albumID: Int!
+    public var albumImage: UIImage
+    public var title: String
+    public var artist: String
     
     init(albumID: Int, albumImage: UIImage, title: String, artist: String){
         self.albumID = albumID

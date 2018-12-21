@@ -54,7 +54,7 @@ open class OAuth2Base: OAuth2Securable {
 		set { clientConfig.clientSecret = newValue }
 	}
 	
-	/// The name of the client, as used during dynamic client registration. Use "client_name" during initalization to set.
+	/// The name of the client, as used during dynamic client registration. Use "client_name" during initialization to set.
 	open var clientName: String? {
 		get { return clientConfig.clientName }
 	}
@@ -190,7 +190,7 @@ open class OAuth2Base: OAuth2Securable {
 		return authURL.description
 	}
 	
-	override func updateFromKeychainItems(_ items: [String: Any]) {
+	override open func updateFromKeychainItems(_ items: [String: Any]) {
 		for message in clientConfig.updateFromStorableItems(items) {
 			logger?.debug("OAuth2", msg: message)
 		}
@@ -471,7 +471,7 @@ open class OAuth2ContextStore {
 	open var state: String {
 		if _state.isEmpty {
 			_state = UUID().uuidString
-			_state = _state[_state.startIndex..<_state.index(_state.startIndex, offsetBy: 8)]		// only use the first 8 chars, should be enough
+			_state = String(_state[_state.startIndex..<_state.index(_state.startIndex, offsetBy: 8)])        // only use the first 8 chars, should be enough
 		}
 		return _state
 	}

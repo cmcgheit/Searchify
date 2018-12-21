@@ -6,13 +6,13 @@ target 'Searchify' do
   use_frameworks!
 
   # Pods for Searchify
-  pod 'Alamofire', '~> 4.4'
-  pod 'IGListKit', '~> 3.0'
-  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+  pod 'Alamofire'
+  pod 'IGListKit'
+  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git', :branch => 'wip/swift4'
   pod 'Soundcloud'
   pod 'cloudrail-si-ios-sdk'
-  pod 'p2.OAuth2', '~> 3.0'
-  
+  pod 'p2.OAuth2'
+
 
   target 'SearchifyTests' do
     inherit! :search_paths

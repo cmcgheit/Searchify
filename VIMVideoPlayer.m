@@ -243,12 +243,12 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
             
             [self.player seekToTime:cmTime completionHandler:^(BOOL finished) {
                 
-                _isAtEndTime = NO;
-                _seeking = NO;
+                self->_isAtEndTime = NO;
+                self->_seeking = NO;
 
                 if (finished)
                 {
-                    _scrubbing = NO;
+                    self->_scrubbing = NO;
                 }
                 
             }];
@@ -444,7 +444,7 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
 {
     [self.player seekToTime:kCMTimeZero toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero completionHandler:^(BOOL finished) {
         
-        _isAtEndTime = NO;
+        self->_isAtEndTime = NO;
         
         if (self.isPlaying)
         {

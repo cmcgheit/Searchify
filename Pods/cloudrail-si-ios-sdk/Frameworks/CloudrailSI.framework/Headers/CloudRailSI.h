@@ -25,6 +25,7 @@ FOUNDATION_EXPORT const unsigned char CloudRailSIString[];
 #import <CloudRailSI/CREgnyte.h>
 #import <CloudRailSI/CROneDriveBusiness.h>
 #import <CloudRailSI/CRMicrosoft.h>
+#import <CloudRailSI/CRPCloud.h>
 
 #pragma mark - BusinessCloudStorage
 #import <CloudRailSI/CRAmazonS3.h>
@@ -74,8 +75,11 @@ FOUNDATION_EXPORT const unsigned char CloudRailSIString[];
 #import <CloudRailSI/CRVimeo.h>
 
 #pragma mark - Messaging
-#import <CloudRailSI/CRTelegram.h>
+#import <CloudRailSI/CRFacebookMessenger.h>
 #import <CloudRailSI/CRLine.h>
+#import <CloudRailSI/CRTelegram.h>
+#import <CloudRailSI/CRViber.h>
+#import <CloudRailSI/CRSlackBot.h>
 
 #pragma mark - Protocols
 #import <CloudRailSI/CRCloudStorageProtocol.h>
@@ -110,12 +114,16 @@ FOUNDATION_EXPORT const unsigned char CloudRailSIString[];
 #import <CloudRailSI/CRAdvancedRequestResponse.h>
 #import <CloudRailSI/CRAdvancedRequestSpecification.h>
 #import <CloudRailSI/CustomStream.h>
-#import <CloudRailSI/CRUploadProgressDelegate.h>
 #import <CloudRailSI/CRVideoMetaData.h>
 #import <CloudRailSI/CRChannelMetaData.h>
 #import <CloudRailSI/CRMessage.h>
 #import <CloudRailSI/CRMessagingAttachment.h>
+#import <CloudRailSI/CRMessageItem.h>
+#import <CloudRailSI/CRMessageButton.h>
 
+#pragma mark - Helper Protocols
+#import <CloudRailSI/CRAuthenticationDelegate.h>
+#import <CloudRailSI/CRUploadProgressDelegate.h>
 
 #pragma mark - Swift Helpers
 #import <CloudRailSI/CRError.h>

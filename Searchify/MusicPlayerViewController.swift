@@ -9,7 +9,6 @@
 import UIKit
 import Alamofire
 import AVFoundation
-import ChameleonFramework
 
 var player = AVAudioPlayer()
 

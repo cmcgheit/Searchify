@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import ChameleonFramework
-import CloudrailSI
+// import CloudrailSI
 
 
 @UIApplicationMain
@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        CRCloudRail.setAppKey(kCloudRailAPIKey)
+        // CRCloudRail.setAppKey(kCloudRailAPIKey)
         
         Chameleon.setGlobalThemeUsingPrimaryColor(.flatBlack,
                                                   withSecondaryColor: .flatTeal,
