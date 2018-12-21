@@ -34,8 +34,6 @@ class ViewController: UIViewController, ListAdapterDataSource {
         adapter.dataSource = self
     }
     
-
-    
     // MARK: - Section Header
     func setupHeader(){
         let bounds = navigationController?.navigationBar.bounds

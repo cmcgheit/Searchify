@@ -12,19 +12,12 @@ import AVFoundation
 import ChameleonFramework
 // import CloudrailSI
 
-struct post {
-    let mainImage: UIImage!
-    let name: String!
-    let previewURL: String!
-    
-}
-
-class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
     
-    var posts = [post]()
+    var posts = [Post]()
     
     var searchURL = String()
     
@@ -53,18 +46,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //        service = youtube
 //        youtube?.useAdvancedAuthentication()
 //    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let keywords = searchBar.text
-        let finalKeywords = keywords?.replacingOccurrences(of: " ", with: "+")
-        
-        searchURL = "https://api.spotify.com/v1/search?q=\(finalKeywords!)&type=track,artist"
-        
-        callAlamo(url: searchURL)
-        // searchVimeo()
-        // searchYoutube()
-        self.view.endEditing(true)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,7 +111,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                 
                                 let mainImage = UIImage(data: mainImageData! as Data)
                                 
-                                posts.append(post.init(mainImage: mainImage, name: name, previewURL: previewURL))
+                                posts.append(Post.init(mainImage: mainImage, name: name, previewURL: previewURL))
                                 self.searchTableView.reloadData()
                             }
                         }
@@ -143,6 +124,20 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print(error)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let indexPath = self.searchTableView.indexPathForSelectedRow?.row
+        
+        let vc = segue.destination as! MusicPlayerViewController
+        
+        vc.image = posts[indexPath!].mainImage
+        vc.mainSongTitle = posts[indexPath!].name
+        vc.mainPreviewURL = posts[indexPath!].previewURL
+        
+    }
+}
+
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
@@ -162,17 +157,18 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell!
         
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let indexPath = self.searchTableView.indexPathForSelectedRow?.row
-        
-        let vc = segue.destination as! MusicPlayerViewController
-        
-        vc.image = posts[indexPath!].mainImage
-        vc.mainSongTitle = posts[indexPath!].name
-        vc.mainPreviewURL = posts[indexPath!].previewURL
-        
-    }
-    
+}
 
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let keywords = searchBar.text
+        let finalKeywords = keywords?.replacingOccurrences(of: " ", with: "+")
+        
+        searchURL = "https://api.spotify.com/v1/search?q=\(finalKeywords!)&type=track,artist"
+        
+        callAlamo(url: searchURL)
+        // searchVimeo()
+        // searchYoutube()
+        self.view.endEditing(true)
+    }
 }

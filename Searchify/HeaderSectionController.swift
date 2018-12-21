@@ -17,6 +17,7 @@ class HeaderSectionController: ListSectionController {
         super.init()
         inset = UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0)
     }
+    
     override func sizeForItem(at index: Int) -> CGSize {
         return CGSize(width: collectionContext!.containerSize.width, height: 45)
     }

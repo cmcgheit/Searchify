@@ -9,7 +9,7 @@
 import UIKit
 import IGListKit
 
-class AlbumPreviewSectionController: ListSectionController, UIScrollViewDelegate {
+class AlbumPreviewSectionController: ListSectionController {
 
     fileprivate let albumsArray = ["nexttankbangas", "samtrump", "sza", "childishgambino", "add-2", "pjmortonblackwhite"] //albums data, pull from internet eventually
     
@@ -59,12 +59,15 @@ class AlbumPreviewSectionController: ListSectionController, UIScrollViewDelegate
         return cell
     }
     
+}
+
+extension AlbumPreviewSectionController: UIScrollViewDelegate {
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView){
         
         let page = scrollView.contentOffset.x/(scrollView.frame.size.width/CGFloat(albumsArray.count))
         pageControl.currentPage = Int(page)
     }
-    
 }
 
 
