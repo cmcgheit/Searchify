@@ -1,5 +1,4 @@
 PODS:
-  - 1PasswordExtension (1.8.5)
   - Alamofire (4.8.0)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
@@ -10,11 +9,7 @@ PODS:
   - IGListKit/Default (3.4.0):
     - IGListKit/Diffing
   - IGListKit/Diffing (3.4.0)
-  - KeychainAccess (3.1.2)
   - p2.OAuth2 (4.0.1)
-  - Soundcloud (1.1.0):
-    - 1PasswordExtension (~> 1.8.3)
-    - KeychainAccess (~> 3.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -22,17 +17,13 @@ DEPENDENCIES:
   - cloudrail-si-ios-sdk
   - IGListKit
   - p2.OAuth2
-  - Soundcloud
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - 1PasswordExtension
     - Alamofire
     - cloudrail-si-ios-sdk
     - IGListKit
-    - KeychainAccess
     - p2.OAuth2
-    - Soundcloud
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -45,15 +36,12 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ViccAlexander/Chameleon.git
 
 SPEC CHECKSUMS:
-  1PasswordExtension: 0e95bdea64ec8ff2f4f693be5467a09fac42a83d
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   cloudrail-si-ios-sdk: 0d3b56fb05f6d608701f7a430008adf17c375c6e
   IGListKit: 7a5d788e9fb746bcd402baa8e8b24bc3bd2a5a07
-  KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
   p2.OAuth2: fdc2effef37793a8f775dd4760bc4c1ea906c956
-  Soundcloud: 476ba41826b4968a963048e76303056dbe529b64
 
-PODFILE CHECKSUM: 9d2447c4ddff2c2e6d83b63e9c9cdcd89e2afe9a
+PODFILE CHECKSUM: dc673cc14e99ac840f91e1a5fd1f7a6577ca0844
 
 COCOAPODS: 1.5.2

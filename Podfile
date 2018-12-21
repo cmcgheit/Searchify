@@ -9,7 +9,6 @@ target 'Searchify' do
   pod 'Alamofire'
   pod 'IGListKit'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git', :branch => 'wip/swift4'
-  pod 'Soundcloud'
   pod 'cloudrail-si-ios-sdk'
   pod 'p2.OAuth2'
 

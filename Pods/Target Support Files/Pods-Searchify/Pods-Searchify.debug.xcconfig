@@ -1,9 +1,9 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/1PasswordExtension" "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire" "${PODS_CONFIGURATION_BUILD_DIR}/ChameleonFramework" "${PODS_CONFIGURATION_BUILD_DIR}/IGListKit" "${PODS_CONFIGURATION_BUILD_DIR}/KeychainAccess" "${PODS_CONFIGURATION_BUILD_DIR}/Soundcloud" "${PODS_CONFIGURATION_BUILD_DIR}/p2.OAuth2" "${PODS_ROOT}/cloudrail-si-ios-sdk/Frameworks"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire" "${PODS_CONFIGURATION_BUILD_DIR}/ChameleonFramework" "${PODS_CONFIGURATION_BUILD_DIR}/IGListKit" "${PODS_CONFIGURATION_BUILD_DIR}/p2.OAuth2" "${PODS_ROOT}/cloudrail-si-ios-sdk/Frameworks"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/1PasswordExtension/OnePasswordExtension.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/ChameleonFramework/ChameleonFramework.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/IGListKit/IGListKit.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/KeychainAccess/KeychainAccess.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Soundcloud/Soundcloud.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/p2.OAuth2/p2_OAuth2.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "Alamofire" -framework "ChameleonFramework" -framework "CloudrailSI" -framework "IGListKit" -framework "KeychainAccess" -framework "MapKit" -framework "OnePasswordExtension" -framework "Soundcloud" -framework "UIKit" -framework "p2_OAuth2"
+OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/ChameleonFramework/ChameleonFramework.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/IGListKit/IGListKit.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/p2.OAuth2/p2_OAuth2.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "Alamofire" -framework "ChameleonFramework" -framework "CloudrailSI" -framework "IGListKit" -framework "MapKit" -framework "UIKit" -framework "p2_OAuth2"
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
