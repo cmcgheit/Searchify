@@ -12,7 +12,6 @@ Includes:
 - [CloudRail Universal Search SDK](https://github.com/CloudRail/cloudrail-si-ios-sdk "CloudRail Developers API")
 - [Vimeo SDK](https://developer.vimeo.com/ "Vimeo Developers")
 - [Youtube API](https://developer.google.com/ "Youtube Developer")
-- [Soundcloud SDK](https://developers.soundcloud.com/ "SoundCloud Developers")
 
 ### Things to Update
 
