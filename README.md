@@ -18,8 +18,8 @@ Includes:
 - [x] update for Swift 4
 - [x] add [Spotify SDK](https://github.com "Spotify SDK")
 - [x] UI
-- [ ] [Animated Tab Bar](https://github.com/Ramotion/animated-tab-bar "Animated Tab Bar)
 - [x] Universal Music search with CloudRail/Soundcloud, etc.
+- [ ] [Animated Tab Bar](https://github.com/Ramotion/animated-tab-bar "Animated Tab Bar)
 
 ### Screenshots
 
