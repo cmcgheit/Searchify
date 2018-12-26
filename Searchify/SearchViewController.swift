@@ -62,8 +62,8 @@ class SearchViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        let textAttributes = [NSForegroundColorAttributeName:UIColor.cyan]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        let textAttributes = [convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor):UIColor.cyan]
+        navigationController?.navigationBar.titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary(textAttributes)
         // Search Bar Properties
         searchBar.barTintColor = UIColor.black
         searchBar.tintColor = UIColor.cyan
@@ -171,4 +171,15 @@ extension SearchViewController: UISearchBarDelegate {
         // searchYoutube()
         self.view.endEditing(true)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

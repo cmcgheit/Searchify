@@ -19,7 +19,7 @@ Includes:
 - [x] add [Spotify SDK](https://github.com "Spotify SDK")
 - [x] UI
 - [x] Universal Music search with CloudRail/Soundcloud, etc.
-- [ ] [Animated Tab Bar](https://github.com/Ramotion/animated-tab-bar "Animated Tab Bar)
+- [ ] [Animated Tab Bar](https://github.com/Ramotion/animated-tab-bar "Animated Tab Bar")
 
 ### Screenshots
 

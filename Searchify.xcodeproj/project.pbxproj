@@ -331,12 +331,13 @@
 					F1969F081EBA34E400F7C3AD = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 48HD6AZC2E;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					F1969F1F1EBA34E400F7C3AD = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 48HD6AZC2E;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						TestTargetID = F1969F081EBA34E400F7C3AD;
 					};
@@ -655,7 +656,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Searchify-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -675,7 +677,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cmcgheit.Searchify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Searchify-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -690,7 +693,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cmcgheit.SearchifyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Searchify.app/Searchify";
 			};
 			name = Debug;
@@ -706,7 +710,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cmcgheit.SearchifyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Searchify.app/Searchify";
 			};
 			name = Release;
