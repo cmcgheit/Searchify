@@ -1,9 +1,9 @@
 //
-//  OAuth2ImplicitGrant.swift
+//  OAuth2ImplicitGrantWithQueryParams.swift
 //  OAuth2
 //
-//  Created by Pascal Pfiffner on 6/9/14.
-//  Copyright 2014 Pascal Pfiffner
+//  Created by Tim Schmitz on 5/3/18.
+//  Copyright 2018 Tim Schmitz
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -18,6 +18,8 @@
 //  limitations under the License.
 //
 
+
+
 import Foundation
 #if !NO_MODULE_IMPORT
 import Base
@@ -25,28 +27,21 @@ import Base
 
 
 /**
-Class to handle OAuth2 requests for public clients, such as distributed Mac/iOS Apps.
-*/
-open class OAuth2ImplicitGrant: OAuth2 {
-	
-	override open class var grantType: String {
-		return "implicit"
-	}
-	
-	override open class var responseType: String? {
-		return "token"
-	}
-	
+ Class to handle OAuth2 implicit grant requests that return params in the query
+ instead of the fragment.
+ */
+open class OAuth2ImplicitGrantWithQueryParams: OAuth2ImplicitGrant {
+
 	override open func handleRedirectURL(_ redirect: URL) {
 		logger?.debug("OAuth2", msg: "Handling redirect URL \(redirect.description)")
 		do {
-			// token should be in the URL fragment
+			// token should be in the URL query
 			let comp = URLComponents(url: redirect, resolvingAgainstBaseURL: true)
-			guard let fragment = comp?.percentEncodedFragment, fragment.count > 0 else {
+			guard let query = comp?.query, query.count > 0 else {
 				throw OAuth2Error.invalidRedirectURL(redirect.description)
 			}
-			
-			let params = type(of: self).params(fromQuery: fragment)
+
+			let params = type(of: self).params(fromQuery: query)
 			let dict = try parseAccessTokenResponse(params: params)
 			logger?.debug("OAuth2", msg: "Successfully extracted access token")
 			didAuthorize(withParameters: dict)
@@ -55,9 +50,4 @@ open class OAuth2ImplicitGrant: OAuth2 {
 			didFail(with: error.asOAuth2Error)
 		}
 	}
-	
-	override open func assureAccessTokenParamsAreValid(_ params: OAuth2JSON) throws {
-		try assureMatchesState(params)
-	}
 }
-

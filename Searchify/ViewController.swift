@@ -17,6 +17,8 @@ class ViewController: UIViewController, ListAdapterDataSource {
     
     var data: [Any] = []
     
+    var viewIsDark = Bool()
+    
     lazy var adapter: ListAdapter = {
         return ListAdapter(updater: ListAdapterUpdater(), viewController: self)
     }()
@@ -65,9 +67,27 @@ class ViewController: UIViewController, ListAdapterDataSource {
         
     }
     
+    // MARK: - Status Bar
     public func emptyView(for listAdapter: ListAdapter) -> UIView?{
         return nil
     }
-
     
+    func makeViewDark() {
+        viewIsDark = true
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    func makeViewLight() {
+        viewIsDark = false
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        
+        if viewIsDark {
+            return .lightContent
+        } else {
+            return .default
+        }
+    }
 }

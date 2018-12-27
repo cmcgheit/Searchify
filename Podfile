@@ -10,7 +10,7 @@ target 'Searchify' do
   pod 'IGListKit'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git', :branch => 'wip/swift4'
   pod 'cloudrail-si-ios-sdk'
-  pod 'p2.OAuth2'
+  pod 'p2.OAuth2', :git => 'https://github.com/p2/OAuth2.git', :submodules => true, :branch => 'master'
 
 
   target 'SearchifyTests' do

@@ -25,4 +25,4 @@ Includes:
 
 ![screen shot 2017-10-03 at 7 57 44 pm](https://user-images.githubusercontent.com/24944725/31155666-65421992-a875-11e7-9d80-669f77dab579.png)
 
-![Previous Searchify Version Gif](/Resources/Searchify.gif)
+![Previous Searchify Version Gif](/Resources/searchify.gif)

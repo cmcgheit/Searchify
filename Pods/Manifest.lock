@@ -16,24 +16,31 @@ DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`, branch `wip/swift4`)
   - cloudrail-si-ios-sdk
   - IGListKit
-  - p2.OAuth2
+  - p2.OAuth2 (from `https://github.com/p2/OAuth2.git`, branch `master`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - cloudrail-si-ios-sdk
     - IGListKit
-    - p2.OAuth2
 
 EXTERNAL SOURCES:
   ChameleonFramework:
     :branch: wip/swift4
     :git: https://github.com/ViccAlexander/Chameleon.git
+  p2.OAuth2:
+    :branch: master
+    :git: https://github.com/p2/OAuth2.git
+    :submodules: true
 
 CHECKOUT OPTIONS:
   ChameleonFramework:
     :commit: db432ca1b1a3d8f83ee1f881208c0c960a325e73
     :git: https://github.com/ViccAlexander/Chameleon.git
+  p2.OAuth2:
+    :commit: e81b4bc4a3cfc3d11b62aba07241ceeb0684ac07
+    :git: https://github.com/p2/OAuth2.git
+    :submodules: true
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
@@ -42,6 +49,6 @@ SPEC CHECKSUMS:
   IGListKit: 7a5d788e9fb746bcd402baa8e8b24bc3bd2a5a07
   p2.OAuth2: fdc2effef37793a8f775dd4760bc4c1ea906c956
 
-PODFILE CHECKSUM: dc673cc14e99ac840f91e1a5fd1f7a6577ca0844
+PODFILE CHECKSUM: 7dfead2e11f49c6384fed479a8956c51e695c5ad
 
 COCOAPODS: 1.5.2
