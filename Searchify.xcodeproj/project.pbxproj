@@ -66,10 +66,10 @@
 		0532C3AA46FAD8039D771106 /* Pods_SearchifyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchifyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44C8B0370B9CD4CF233097A5 /* Pods-Searchify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Searchify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Searchify/Pods-Searchify.release.xcconfig"; sourceTree = "<group>"; };
 		66509FB4E37800766616DB94 /* Pods-SearchifyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchifyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SearchifyTests/Pods-SearchifyTests.release.xcconfig"; sourceTree = "<group>"; };
-		6A13F35E1F58A81A0018B8A8 /* VIMVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VIMVideoPlayer.h; path = ../VIMVideoPlayer.h; sourceTree = "<group>"; };
-		6A13F35F1F58A81A0018B8A8 /* VIMVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VIMVideoPlayer.m; path = ../VIMVideoPlayer.m; sourceTree = "<group>"; };
-		6A13F3601F58A81A0018B8A8 /* VIMVideoPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VIMVideoPlayerView.h; path = ../VIMVideoPlayerView.h; sourceTree = "<group>"; };
-		6A13F3611F58A81A0018B8A8 /* VIMVideoPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VIMVideoPlayerView.m; path = ../VIMVideoPlayerView.m; sourceTree = "<group>"; };
+		6A13F35E1F58A81A0018B8A8 /* VIMVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIMVideoPlayer.h; sourceTree = "<group>"; };
+		6A13F35F1F58A81A0018B8A8 /* VIMVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIMVideoPlayer.m; sourceTree = "<group>"; };
+		6A13F3601F58A81A0018B8A8 /* VIMVideoPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIMVideoPlayerView.h; sourceTree = "<group>"; };
+		6A13F3611F58A81A0018B8A8 /* VIMVideoPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIMVideoPlayerView.m; sourceTree = "<group>"; };
 		6A13F3641F58A8DA0018B8A8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6A13F36C1F619CBD0018B8A8 /* AlbumPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		6A13F36D1F619CBD0018B8A8 /* AlbumPreviewCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumPreviewCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -95,8 +95,8 @@
 		6A93D5CE1EEC5A5200855587 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6A93D5D01EEC5A5F00855587 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6A93D5D21EEC5D5500855587 /* Searchify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Searchify-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		6A93D5D31EEC5D5600855587 /* SpotifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotifyViewController.h; path = ../SpotifyViewController.h; sourceTree = "<group>"; };
-		6A93D5D41EEC5D5600855587 /* SpotifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotifyViewController.m; path = ../SpotifyViewController.m; sourceTree = "<group>"; };
+		6A93D5D31EEC5D5600855587 /* SpotifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyViewController.h; sourceTree = "<group>"; };
+		6A93D5D41EEC5D5600855587 /* SpotifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyViewController.m; sourceTree = "<group>"; };
 		6A9AC26F21CD9DE70092AC6F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		6AB6AD001F7F54A500F0429E /* AlbumPreviewsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumPreviewsData.swift; sourceTree = "<group>"; };
 		6AB6AD021F7F54CB00F0429E /* HeaderData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderData.swift; sourceTree = "<group>"; };
@@ -144,23 +144,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6A13F3661F619C080018B8A8 /* Controller */ = {
+		6AFAF07A2220E16300DCAF28 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F1969F0E1EBA34E400F7C3AD /* ViewController.swift */,
-				6A13F3701F619D9E0018B8A8 /* AlbumPreviewSectionController.swift */,
-				6A13F3741F61ACA70018B8A8 /* TabBarViewController.swift */,
-				6A1F4EBC1F7F4ABA0034D7E3 /* HeaderSectionController.swift */,
-				6A1F4EBE1F7F4AE10034D7E3 /* TrackSectionController.swift */,
-				6A1F4EC01F7F4B090034D7E3 /* AlbumSectionController.swift */,
-				6A1F4EC21F7F4B260034D7E3 /* ButtonSectionController.swift */,
-				6A1F4EC41F7F4B5D0034D7E3 /* MusicPlayerViewController.swift */,
-				6AB6AD0A1F7F645300F0429E /* SearchViewController.swift */,
+				6A13F3641F58A8DA0018B8A8 /* Constants.swift */,
+				6A1F4EB81F7F49330034D7E3 /* TracksData.swift */,
+				6A1F4EBA1F7F496B0034D7E3 /* AlbumsData.swift */,
+				6AB6AD001F7F54A500F0429E /* AlbumPreviewsData.swift */,
+				6AB6AD021F7F54CB00F0429E /* HeaderData.swift */,
+				6AB6AD041F7F552900F0429E /* AlbumView.swift */,
+				6AB6AD061F7F608100F0429E /* Album.swift */,
+				6AB6AD081F7F608E00F0429E /* Track.swift */,
+				6A9AC26F21CD9DE70092AC6F /* Post.swift */,
 			);
-			name = Controller;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		6A13F3671F619C180018B8A8 /* View */ = {
+		6AFAF07B2220E18400DCAF28 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				6A13F36C1F619CBD0018B8A8 /* AlbumPreviewCollectionViewCell.swift */,
@@ -174,26 +174,26 @@
 				6A1F4ED41F7F507D0034D7E3 /* ButtonViewCell.swift */,
 				6A1F4ED51F7F507D0034D7E3 /* ButtonViewCell.xib */,
 			);
-			name = View;
+			path = View;
 			sourceTree = "<group>";
 		};
-		6A13F3681F619C250018B8A8 /* Model */ = {
+		6AFAF07C2220E1EC00DCAF28 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6A13F3641F58A8DA0018B8A8 /* Constants.swift */,
-				6A1F4EB81F7F49330034D7E3 /* TracksData.swift */,
-				6A1F4EBA1F7F496B0034D7E3 /* AlbumsData.swift */,
-				6AB6AD001F7F54A500F0429E /* AlbumPreviewsData.swift */,
-				6AB6AD021F7F54CB00F0429E /* HeaderData.swift */,
-				6AB6AD041F7F552900F0429E /* AlbumView.swift */,
-				6AB6AD061F7F608100F0429E /* Album.swift */,
-				6AB6AD081F7F608E00F0429E /* Track.swift */,
-				6A9AC26F21CD9DE70092AC6F /* Post.swift */,
+				F1969F0E1EBA34E400F7C3AD /* ViewController.swift */,
+				6AB6AD0A1F7F645300F0429E /* SearchViewController.swift */,
+				6A1F4EC41F7F4B5D0034D7E3 /* MusicPlayerViewController.swift */,
+				6A1F4EC21F7F4B260034D7E3 /* ButtonSectionController.swift */,
+				6A1F4EC01F7F4B090034D7E3 /* AlbumSectionController.swift */,
+				6A1F4EBE1F7F4AE10034D7E3 /* TrackSectionController.swift */,
+				6A1F4EBC1F7F4ABA0034D7E3 /* HeaderSectionController.swift */,
+				6A13F3741F61ACA70018B8A8 /* TabBarViewController.swift */,
+				6A13F3701F619D9E0018B8A8 /* AlbumPreviewSectionController.swift */,
 			);
-			name = Model;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		6A13F3691F619C2B0018B8A8 /* Resources */ = {
+		6AFAF07D2220E22700DCAF28 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				6A13F35E1F58A81A0018B8A8 /* VIMVideoPlayer.h */,
@@ -203,7 +203,7 @@
 				6A93D5D31EEC5D5600855587 /* SpotifyViewController.h */,
 				6A93D5D41EEC5D5600855587 /* SpotifyViewController.m */,
 			);
-			name = Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		C1DDC807E50584BFFF4D8182 /* Frameworks */ = {
@@ -253,15 +253,15 @@
 		F1969F0B1EBA34E400F7C3AD /* Searchify */ = {
 			isa = PBXGroup;
 			children = (
-				6A13F3691F619C2B0018B8A8 /* Resources */,
-				6A13F3681F619C250018B8A8 /* Model */,
-				6A13F3671F619C180018B8A8 /* View */,
-				6A13F3661F619C080018B8A8 /* Controller */,
+				6AFAF07A2220E16300DCAF28 /* Model */,
+				6AFAF07B2220E18400DCAF28 /* View */,
+				6AFAF07C2220E1EC00DCAF28 /* Controller */,
+				6AFAF07D2220E22700DCAF28 /* Resources */,
 				F1969F0C1EBA34E400F7C3AD /* AppDelegate.swift */,
 				6A93D5D21EEC5D5500855587 /* Searchify-Bridging-Header.h */,
 				F1969F101EBA34E400F7C3AD /* Main.storyboard */,
-				F1969F161EBA34E400F7C3AD /* Assets.xcassets */,
 				F1969F181EBA34E400F7C3AD /* LaunchScreen.storyboard */,
+				F1969F161EBA34E400F7C3AD /* Assets.xcassets */,
 				F1969F1B1EBA34E400F7C3AD /* Info.plist */,
 				F1969F131EBA34E400F7C3AD /* Searchify.xcdatamodeld */,
 			);
