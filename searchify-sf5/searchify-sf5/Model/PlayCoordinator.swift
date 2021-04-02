@@ -25,7 +25,6 @@ final class PlayCoordinator {
     }
     
     var playerVC: PlayerVC?
-    
     var player: AVPlayer?
     var playerQueue: AVQueuePlayer?
     
@@ -35,14 +34,15 @@ final class PlayCoordinator {
         
         self.track = track
         self.tracks = []
-        let vc = PlayerVC()
-        vc.title = track.name
-        vc.dataSource = self
-        vc.delegate = self
-        viewController.present(UINavigationController(rootViewController: vc), animated: true) { [weak self] in
+        
+        let playerVC = PlayerVC()
+        playerVC.title = track.name
+        playerVC.dataSource = self
+        playerVC.delegate = self
+        viewController.present(UINavigationController(rootViewController: playerVC), animated: true) { [weak self] in
             self?.player?.play()
         }
-        self.playerVC = vc
+        self.playerVC = playerVC
     }
     
     func startPlayback(from viewController: UIViewController, tracks: [AudioTrack]) {
@@ -58,11 +58,11 @@ final class PlayCoordinator {
         self.playerQueue?.volume = 0.5
         self.playerQueue?.play()
         
-        let vc = PlayerVC()
-        vc.dataSource = self
-        vc.delegate = self
-        viewController.present(UINavigationController(rootViewController: vc), animated: true, completion: nil)
-        self.playerVC = vc
+        let playerVC = PlayerVC()
+        playerVC.dataSource = self
+        playerVC.delegate = self
+        viewController.present(UINavigationController(rootViewController: playerVC), animated: true, completion: nil)
+        self.playerVC = playerVC
     }
 }
 
@@ -88,7 +88,7 @@ extension PlayCoordinator: PlayerViewControllerDelegate {
     
     func didTapForward() {
         if tracks.isEmpty {
-            // Not playlist or album
+            // No playlist or album
             player?.pause()
         }
         else if let player = playerQueue {
@@ -101,7 +101,7 @@ extension PlayCoordinator: PlayerViewControllerDelegate {
     
     func didTapBackward() {
         if tracks.isEmpty {
-            // Not playlist or album
+            // No playlist or album
             player?.pause()
             player?.play()
         }

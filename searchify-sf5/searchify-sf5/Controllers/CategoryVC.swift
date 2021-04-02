@@ -27,7 +27,7 @@ class CategoryVC: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
     
     override func viewDidLoad() {
@@ -41,6 +41,15 @@ class CategoryVC: UIViewController {
         categoryCollectionView.dataSource = self
         categoryCollectionView.delegate = self
         
+        getCategoryPlaylists()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        categoryCollectionView.frame = view.bounds
+    }
+    
+    private func getCategoryPlaylists() {
         APIManager.shared.getCategoryPlaylists(category: category) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -52,11 +61,6 @@ class CategoryVC: UIViewController {
                 }
             }
         }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        categoryCollectionView.frame = view.bounds
     }
 }
 

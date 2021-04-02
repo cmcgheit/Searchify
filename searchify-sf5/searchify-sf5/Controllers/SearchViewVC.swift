@@ -17,18 +17,19 @@ class SearchViewVC: UIViewController {
         return searchVC
     }()
     
-    private let searchCollectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: { _, _ -> NSCollectionLayoutSection? in
-        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-        
-        item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 7, bottom: 2, trailing: 7)
-        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(150)), subitem: item, count: 2)
-        
-        group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
-        
-        return NSCollectionLayoutSection(group: group)
-    })
-    )
+    private let searchCollectionView: UICollectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: { _, _ -> NSCollectionLayoutSection? in
+                let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+
+                item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 7, bottom: 2, trailing: 7)
+
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(150)), subitem: item, count: 2)
+
+                group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
+
+                return NSCollectionLayoutSection(group: group)
+            }))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,12 +42,20 @@ class SearchViewVC: UIViewController {
         
         
         view.addSubview(searchCollectionView)
-        searchCollectionView.register(CategoryCollectionViewCell.self,
-                                      forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
+        searchCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
         searchCollectionView.delegate = self
         searchCollectionView.dataSource = self
         searchCollectionView.backgroundColor = .systemBackground
         
+        getCategories()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        searchCollectionView.frame = view.bounds
+    }
+    
+    private func getCategories() {
         APIManager.shared.getCategories { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -58,11 +67,6 @@ class SearchViewVC: UIViewController {
                 }
             }
         }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        searchCollectionView.frame = view.bounds
     }
     
     // MARK: - Search Function (only happens when user hits enter/return to save API hits)
@@ -95,15 +99,15 @@ extension SearchViewVC: UISearchResultsUpdating, UISearchBarDelegate, SearchResu
             present(vc, animated: true)
             
         case .album(let model):
-            let vc = AlbumVC(album: model)
-            vc.navigationItem.largeTitleDisplayMode = .never
-            navigationController?.pushViewController(vc, animated: true)
+            let albumVC = AlbumVC(album: model)
+            albumVC.navigationItem.largeTitleDisplayMode = .never
+            navigationController?.pushViewController(albumVC, animated: true)
         case .track(let model):
             PlayCoordinator.shared.startPlayback(from: self, track: model)
         case .playlist(let model):
-            let vc = PlaylistVC(playlist: model)
-            vc.navigationItem.largeTitleDisplayMode = .never
-            navigationController?.pushViewController(vc, animated: true)
+            let playlistVC = PlaylistVC(playlist: model)
+            playlistVC.navigationItem.largeTitleDisplayMode = .never
+            navigationController?.pushViewController(playlistVC, animated: true)
         }
     }
     

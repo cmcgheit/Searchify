@@ -49,7 +49,7 @@ class AlbumVC: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
     
     override func viewDidLoad() {
@@ -65,6 +65,15 @@ class AlbumVC: UIViewController {
         albumCollectionView.delegate = self
         albumCollectionView.dataSource = self
         
+        getAlbumDetails()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        albumCollectionView.frame = view.bounds
+    }
+    
+    private func getAlbumDetails() {
         APIManager.shared.getAlbumDetails(for: album) { albumResult in
             switch albumResult {
             case .success(let model):
@@ -73,11 +82,6 @@ class AlbumVC: UIViewController {
                 break
             }
         }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        albumCollectionView.frame = view.bounds
     }
 }
 
@@ -107,12 +111,19 @@ extension AlbumVC: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            collectionView.deselectItem(at: indexPath, animated: true)
-            var track = tracks[indexPath.row]
-            track.album = self.album
+        collectionView.deselectItem(at: indexPath, animated: true)
+        var track = tracks[indexPath.row]
+        track.album = self.album
+        if (tracks[indexPath.row].preview_url == nil) {
+            let noTracksAlert = UIAlertController(title: "No Audio Track", message: "There are no audio tracks associated with this item", preferredStyle: .alert)
+            
+            noTracksAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            
+            self.present(noTracksAlert, animated: true)
+        } else {
             PlayCoordinator.shared.startPlayback(from: self, track: track)
         }
-
+    }
 }
 
 extension AlbumVC: PlaylistHeaderCollectionReusableViewDelegate {

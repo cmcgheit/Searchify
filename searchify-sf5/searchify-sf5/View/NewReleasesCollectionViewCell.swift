@@ -47,7 +47,7 @@ class NewReleasesCollectionViewCell: UICollectionViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
     
     override func layoutSubviews() {
@@ -65,26 +65,9 @@ class NewReleasesCollectionViewCell: UICollectionViewCell {
         albumCoverImageView.frame = CGRect(x: 5, y: 5, width: imageSize, height: imageSize)
         
         let albumLabelHeight = min(60, albumLabelSize.height)
-        albumNameLabel.frame = CGRect(
-            x: albumCoverImageView.right+10,
-            y: 5,
-            width: albumLabelSize.width,
-            height: albumLabelHeight
-        )
-        
-        artistNameLabel.frame = CGRect(
-            x: albumCoverImageView.right+10,
-            y: albumNameLabel.bottom,
-            width: contentView.width - albumCoverImageView.right-10,
-            height: 30
-        )
-        
-        numberOfTracksLabel.frame = CGRect(
-            x: albumCoverImageView.right+10,
-            y: contentView.bottom-44,
-            width: numberOfTracksLabel.width,
-            height: 44
-        )
+        albumNameLabel.frame = CGRect(x: albumCoverImageView.right + 10, y: 5, width: albumLabelSize.width, height: albumLabelHeight)
+        artistNameLabel.frame = CGRect(x: albumCoverImageView.right + 10, y: albumNameLabel.bottom, width: contentView.width - albumCoverImageView.right - 10, height: 30)
+        numberOfTracksLabel.frame = CGRect(x: albumCoverImageView.right + 10, y: contentView.bottom-44, width: numberOfTracksLabel.width, height: 44)
     }
     
     override func prepareForReuse() {
@@ -99,6 +82,6 @@ class NewReleasesCollectionViewCell: UICollectionViewCell {
         albumNameLabel.text = viewModel.name
         artistNameLabel.text = viewModel.artistName
         numberOfTracksLabel.text = "Tracks: \(viewModel.numberOfTracks)"
-        albumCoverImageView.sd_setImage(with: viewModel.artworkURL, completed: nil)
+        albumCoverImageView.sd_setImage(with: viewModel.artworkURL, placeholderImage: UIImage(named: "default-music-note"), completed: nil)
     }
 }

@@ -45,19 +45,9 @@ class RecommendedTrackCollectionViewCell: UICollectionViewCell {
 
       override func layoutSubviews() {
           super.layoutSubviews()
-          albumCoverImageView.frame = CGRect(x: 5, y: 2, width: contentView.height-4, height: contentView.height-4)
-          trackNameLabel.frame = CGRect(
-              x: albumCoverImageView.right+10,
-              y: 0,
-              width: contentView.width-albumCoverImageView.right-15,
-              height: contentView.height/2
-          )
-          artistNameLabel.frame = CGRect(
-              x: albumCoverImageView.right+10,
-              y: contentView.height/2,
-              width: contentView.width-albumCoverImageView.right-15,
-              height: contentView.height/2
-          )
+          albumCoverImageView.frame = CGRect(x: 5, y: 2, width: contentView.height - 4, height: contentView.height - 4)
+          trackNameLabel.frame = CGRect(x: albumCoverImageView.right + 10, y: 0, width: contentView.width - albumCoverImageView.right - 15, height: contentView.height/2)
+          artistNameLabel.frame = CGRect(x: albumCoverImageView.right + 10, y: contentView.height/2, width: contentView.width - albumCoverImageView.right - 15, height: contentView.height/2)
       }
 
       override func prepareForReuse() {
@@ -69,7 +59,7 @@ class RecommendedTrackCollectionViewCell: UICollectionViewCell {
 
       func configure(with viewModel: RecommendedTrackViewModel) {
         trackNameLabel.text = viewModel.artist // trackName?
-          albumCoverImageView.sd_setImage(with: viewModel.artworkURL, completed: nil)
+          albumCoverImageView.sd_setImage(with: viewModel.artworkURL, placeholderImage: UIImage(named: "default-music-note"), completed: nil)
           artistNameLabel.text = viewModel.artistName
       }
 

@@ -69,7 +69,7 @@ class ProfileVC: UIViewController {
         profileHeader.addSubview(imageView)
         imageView.center = profileHeader.center
         imageView.contentMode = .scaleAspectFill
-        imageView.sd_setImage(with: url, completed: nil)
+        imageView.sd_setImage(with: url, placeholderImage: UIImage(named: "default-placeholder-green"), completed: nil)
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = imageSize/2
         

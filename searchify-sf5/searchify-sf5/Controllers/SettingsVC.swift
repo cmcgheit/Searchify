@@ -13,12 +13,13 @@ class SettingsVC: UIViewController {
         settingsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "settingsCell")
         return settingsTableView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureModels()
         title = "Settings"
         view.backgroundColor = .systemBackground
+        
         view.addSubview(settingsTableView)
         settingsTableView.dataSource = self
         settingsTableView.delegate = self
@@ -51,7 +52,24 @@ class SettingsVC: UIViewController {
     
     // MARK: - Sign Out
     private func signOut() {
-        
+        let signOutAlert = UIAlertController(title: "Sign Out", message: "Are you sure you want to sign out?", preferredStyle: .alert)
+        signOutAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        signOutAlert.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { _ in
+            AuthManager.shared.signOut { [weak self] signedOut in
+                if signedOut {
+                    DispatchQueue.main.async {
+                        let navVC = UINavigationController(rootViewController: WelcomeVC())
+                        navVC.navigationBar.prefersLargeTitles = true
+                        navVC.viewControllers.first?.navigationItem.largeTitleDisplayMode = .always
+                        navVC.modalPresentationStyle = .fullScreen
+                        self?.present(navVC, animated: true, completion: {
+                            self?.navigationController?.popViewController(animated: false)
+                        })
+                    }
+                }
+            }
+        }))
+        present(signOutAlert, animated: true)
     }
 }
 

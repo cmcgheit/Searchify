@@ -256,5 +256,51 @@ final class APIManager {
             task.resume()
         }
     }
+    
+    // MARK: - Get Users Playlists Function
+    public func getUserPlaylists(completion: @escaping (Result<([Playlist]), Error>) -> Void) {
+        createGenericAPIRequest(with: URL(string: Constants.baseAPIURL + "/me/playlists/?limit=50"), type: .GET) { request in
+            let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+                
+                do {
+                    let result = try JSONDecoder().decode(LibraryPlaylistsResponse.self, from: data)
+                    completion(.success(result.items))
+                    //                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    //                    print(json)
+                } catch {
+                    print(error)
+                    completion(.failure(error))
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    // MARK: - Get User Albums Function
+    public func getUserAlbums(completion: @escaping (Result<[Album], Error>) -> Void) {
+        createGenericAPIRequest(with: URL(string: Constants.baseAPIURL + "/me/albums"), type: .GET) { request in
+            let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+                
+                do {
+                    let result = try JSONDecoder().decode(LibraryAlbumsResponse.self, from: data)
+                    completion(.success(result.items.compactMap({ $0.album })))
+                    //                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    //                    print(json)
+                }
+                catch {
+                    completion(.failure(error))
+                }
+            }
+            task.resume()
+        }
+    }
 }
 

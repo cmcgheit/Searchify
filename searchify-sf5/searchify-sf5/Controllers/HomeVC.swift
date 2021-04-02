@@ -43,10 +43,7 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         title = "Home"
         view.backgroundColor = .systemBackground
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"),
-                                                            style: .done,
-                                                            target: self,
-                                                            action: #selector(didTapSettings))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: #selector(didTapSettings))
         configureCollectionView()
         view.addSubview(loadingSpinner)
         fetchData()
@@ -223,7 +220,16 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegate {
             navigationController?.pushViewController(playlistVC, animated: true)
         case .recommendedTracks:
             let track = tracks[indexPath.row]
-            PlayCoordinator.shared.startPlayback(from: self, track: track)
+        
+            if (tracks[indexPath.row].preview_url == nil) {
+                let noTracksAlert = UIAlertController(title: "No Audio Track", message: "There are no audio tracks associated with this item", preferredStyle: .alert)
+
+                noTracksAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+
+                self.present(noTracksAlert, animated: true)
+            } else {
+                PlayCoordinator.shared.startPlayback(from: self, track: track)
+            }
         }
     }
     

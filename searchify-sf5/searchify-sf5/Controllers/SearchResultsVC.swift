@@ -92,42 +92,32 @@ extension SearchResultsVC: UITableViewDataSource, UITableViewDelegate {
         let result = sectionResults[indexPath.section].results[indexPath.row]
         switch result {
         case .artist(let artist):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultsTableViewCell.identifier, for: indexPath) as? SearchResultsTableViewCell else { return  UITableViewCell() }
+            guard let artistCell = tableView.dequeueReusableCell(withIdentifier: SearchResultsTableViewCell.identifier, for: indexPath) as? SearchResultsTableViewCell else { return  UITableViewCell() }
             let viewModel = SearchResultsViewModel(title: artist.name, imageURL: URL(string: artist.images?.first?.url ?? ""))
-            cell.configure(with: viewModel)
-            return cell
+            artistCell.configure(with: viewModel)
+            return artistCell
         case .album(model: let album):
-            break
+            guard let albumCell = tableView.dequeueReusableCell(withIdentifier: SearchResultsMultilineTableViewCell.identifier, for: indexPath) as? SearchResultsMultilineTableViewCell else { return  UITableViewCell() }
+            let viewModel = SearchResultsMultilineViewModel(title: album.name, subTitle: album.artists.first?.name ?? "", imageURL: URL(string: album.images.first?.url ?? ""))
+            albumCell.configure(with: viewModel)
+            return albumCell
         case .track(model: let track):
-            break
+            guard let trackCell = tableView.dequeueReusableCell(withIdentifier: SearchResultsMultilineTableViewCell.identifier, for: indexPath) as? SearchResultsMultilineTableViewCell else { return  UITableViewCell() }
+            let viewModel = SearchResultsMultilineViewModel(title: track.name, subTitle: track.artists.first?.name ?? "-", imageURL: URL(string: track.album?.images.first?.url ?? ""))
+            trackCell.configure(with: viewModel)
+            return trackCell
         case .playlist(model: let playlist):
             guard let playlistCell = tableView.dequeueReusableCell(withIdentifier: SearchResultsMultilineTableViewCell.identifier, for: indexPath) as? SearchResultsMultilineTableViewCell else { return  UITableViewCell() }
             let viewModel = SearchResultsMultilineViewModel(title: playlist.name, subTitle: playlist.owner.display_name, imageURL: URL(string: playlist.images.first?.url ?? ""))
             playlistCell.configure(with: viewModel)
             return playlistCell
         }
-        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let result = sectionResults[indexPath.section].results[indexPath.row]
         delegate?.didTapResult(result)
-//        let result = sectionResults[indexPath.section].results[indexPath.row]
-//        switch result {
-//        case .artist(let model):
-//            break
-//        case .album(let model):
-//            let albumVC = AlbumVC(album: model)
-//            albumVC.navigationItem.largeTitleDisplayMode = .never
-//            navigationController?.pushViewController(albumVC, animated: true)
-//        case .track(let model):
-//            break
-//        case .playlist(let model):
-//            let playlistVC = PlaylistVC(playlist: model)
-//            playlistVC.navigationItem.largeTitleDisplayMode = .never
-//            navigationController?.pushViewController(playlistVC, animated: true)
-//        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

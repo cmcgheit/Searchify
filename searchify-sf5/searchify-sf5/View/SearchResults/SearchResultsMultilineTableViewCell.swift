@@ -5,6 +5,7 @@
 import UIKit
 
 class SearchResultsMultilineTableViewCell: UITableViewCell {
+    
     static let identifier = "SearchResultsMultilineTableViewCell"
     
     private let searchMultiLabel: UILabel = {
@@ -30,13 +31,13 @@ class SearchResultsMultilineTableViewCell: UITableViewCell {
         contentView.addSubview(searchMultiLabel)
         contentView.addSubview(searchSecondaryLabel)
         contentView.addSubview(searchIconMultiImageView)
-        
         contentView.clipsToBounds = true
+        
         accessoryType = . disclosureIndicator
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
     
     override func layoutSubviews() {
@@ -45,10 +46,9 @@ class SearchResultsMultilineTableViewCell: UITableViewCell {
         searchIconMultiImageView.frame = CGRect(x: 10, y: 5, width: imageSize, height: imageSize)
         
         let labelHeight = contentView.height / 2
-        searchMultiLabel.frame = CGRect(x: searchIconMultiImageView.right + 10, y: 0, width: contentView.width-searchIconMultiImageView.right - 15, height: contentView.height)
-        searchSecondaryLabel.frame = CGRect(x:searchIconMultiImageView.right + 10 , y: labelHeight, width:contentView.width - searchIconMultiImageView.right - 15 , height: labelHeight)
-
-      
+        let labelWidth = contentView.width - searchIconMultiImageView.right - 15
+        searchMultiLabel.frame = CGRect(x: searchIconMultiImageView.right + 10, y: 0, width: labelWidth, height: labelHeight)
+        searchSecondaryLabel.frame = CGRect(x:searchIconMultiImageView.right + 10 , y: searchMultiLabel.bottom, width: labelWidth, height: labelHeight)
     }
     
     override func prepareForReuse() {
@@ -61,5 +61,4 @@ class SearchResultsMultilineTableViewCell: UITableViewCell {
         searchMultiLabel.text = viewModel.title
         searchSecondaryLabel.text = viewModel.subTitle
     }
-    
 }

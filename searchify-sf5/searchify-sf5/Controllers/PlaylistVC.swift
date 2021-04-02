@@ -9,6 +9,7 @@ class PlaylistVC: UIViewController {
     private let playlist: Playlist
     private var playlistViewModel = [RecommendedTrackViewModel]()
     private var tracks = [AudioTrack]()
+    public var isOwner = false
     
     private let playlistCollectionView = UICollectionView(
         frame: .zero,
@@ -67,10 +68,22 @@ class PlaylistVC: UIViewController {
         
         playlistCollectionView.register(PlaylistHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: PlaylistHeaderCollectionReusableView.identifier)
         
+        getPlaylistDetails()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(didTapShare))
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        playlistCollectionView.frame = view.bounds
+    }
+    
+    private func getPlaylistDetails() {
         APIManager.shared.getPlaylistDetails(for: playlist) { [weak self] playlistDetails in
             DispatchQueue.main.async {
                 switch playlistDetails {
                 case .success(let model):
+                    self?.tracks = model.tracks.items.compactMap({ $0.track })
                     self?.playlistViewModel = model.tracks.items.compactMap({
                         RecommendedTrackViewModel(
                             artist: $0.track.name,
@@ -84,13 +97,6 @@ class PlaylistVC: UIViewController {
                 }
             }
         }
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(didTapShare))
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        playlistCollectionView.frame = view.bounds
     }
     
     // MARK: - Play Share Button
@@ -121,11 +127,20 @@ extension PlaylistVC: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            collectionView.deselectItem(at: indexPath, animated: true)
-            let index = indexPath.row
-            let track = tracks[index]
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let index = indexPath.row
+        let track = tracks[index]
+    
+        if (tracks[index].preview_url == nil) {
+            let noTracksAlert = UIAlertController(title: "No Audio Track", message: "There are no audio tracks associated with this item", preferredStyle: .alert)
+
+            noTracksAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+
+            self.present(noTracksAlert, animated: true)
+        } else {
             PlayCoordinator.shared.startPlayback(from: self, track: track)
         }
+    }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(
@@ -136,17 +151,12 @@ extension PlaylistVC: UICollectionViewDataSource, UICollectionViewDelegate {
         kind == UICollectionView.elementKindSectionHeader else {
             return UICollectionReusableView()
         }
-        let playlistHeaderViewModel = PlaylistHeaderViewViewModel(
-            name: playlist.name,
-            ownerName: playlist.owner.display_name,
-            description: playlist.description,
-            artworkURL: URL(string: playlist.images.first?.url ?? "")
+        let playlistHeaderViewModel = PlaylistHeaderViewViewModel(name: playlist.name, ownerName: playlist.owner.display_name, description: playlist.description, artworkURL: URL(string: playlist.images.first?.url ?? "")
         )
         header.configure(with: playlistHeaderViewModel)
         header.delegate = self
         return header
     }
-    
 }
 
 extension PlaylistVC: PlaylistHeaderCollectionReusableViewDelegate {

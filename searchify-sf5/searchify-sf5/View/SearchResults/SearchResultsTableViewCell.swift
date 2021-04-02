@@ -5,6 +5,7 @@
 import UIKit
 
 class SearchResultsTableViewCell: UITableViewCell {
+    
     static let identifier = "SearchResultsTableViewCell"
     
     private let searchLabel: UILabel = {
@@ -28,7 +29,7 @@ class SearchResultsTableViewCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
     
     override func layoutSubviews() {
@@ -37,7 +38,7 @@ class SearchResultsTableViewCell: UITableViewCell {
         searchIconImageView.layer.cornerRadius = imageSize / 2
         searchIconImageView.layer.masksToBounds = true
         searchIconImageView.frame = CGRect(x: 10, y: 5, width: imageSize, height: imageSize)
-        searchLabel.frame = CGRect(x: searchIconImageView.right + 10, y: 0, width: contentView.width-searchIconImageView.right - 15, height: contentView.height)
+        searchLabel.frame = CGRect(x: searchIconImageView.right + 10, y: 0, width: contentView.width - searchIconImageView.right - 15, height: contentView.height)
     }
     
     override func prepareForReuse() {
@@ -48,7 +49,6 @@ class SearchResultsTableViewCell: UITableViewCell {
     
     func configure(with viewModel: SearchResultsViewModel) {
         searchLabel.text = viewModel.title
-        searchIconImageView.sd_setImage(with: viewModel.imageURL, completed: nil)
+        searchIconImageView.sd_setImage(with: viewModel.imageURL, placeholderImage: UIImage(named: "default-music-note"), completed: nil)
     }
-    
 }

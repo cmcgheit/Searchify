@@ -8,23 +8,47 @@ class WelcomeVC: UIViewController {
     
     private let signInButton: UIButton = {
         let signInButton = UIButton()
-        signInButton.backgroundColor = .systemGreen
-        signInButton.setTitleColor(.white, for: .normal)
+        signInButton.backgroundColor = .white
+        signInButton.setTitle("Sign In", for: .normal)
+        signInButton.setTitleColor(.darkGray, for: .normal)
+        signInButton.layer.cornerRadius = 4
         return signInButton
+    }()
+    
+    private let welcomeImageView: UIImageView = {
+       let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "best-vinyl-albums")
+        return imageView
+    }()
+    
+    private let overlayView: UIView = {
+       let view = UIView()
+        view.backgroundColor = .darkGray
+        view.alpha = 0.7
+        return view
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Searchify"
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
         view.backgroundColor = .systemBackground
+        view.addSubview(welcomeImageView)
+        view.addSubview(overlayView) // add after imageView
+        
         view.addSubview(signInButton)
         signInButton.addTarget(self, action:
                                #selector(didTapSignIn), for: .touchUpInside)
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        signInButton.frame = CGRect(x: 20, y: view.height-50-view.safeAreaInsets.bottom, width: view.width-40, height: 50)
+        signInButton.frame = CGRect(x: 20, y: view.height - 30 - view.safeAreaInsets.bottom, width: view.width - 40, height: 50)
+        welcomeImageView.frame = view.bounds
+        overlayView.frame = view.bounds
     }
    
     @objc func didTapSignIn() {
@@ -51,5 +75,4 @@ class WelcomeVC: UIViewController {
         mainAppTabBarVC.modalPresentationStyle = .fullScreen
         present(mainAppTabBarVC, animated: true)
     }
-    
 }

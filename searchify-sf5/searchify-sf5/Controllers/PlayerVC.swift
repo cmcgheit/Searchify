@@ -39,13 +39,12 @@ class PlayerVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        playerImageView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.width, height: view.height)
+        playerImageView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: 400, height: 400)
         controlsView.frame = CGRect(x: 10, y: playerImageView.bottom + 10, width: view.width - 20, height: view.height - playerImageView.height - view.safeAreaInsets.top - view.safeAreaInsets.bottom - 15)
     }
     
     private func configureBarButtons() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(didTapClose))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(didTapAction))
     }
     
     private func configure() {
@@ -57,10 +56,6 @@ class PlayerVC: UIViewController {
     
     @objc private func didTapClose() {
         dismiss(animated: true, completion: nil)
-    }
-    
-    @objc private func didTapAction() {
-        
     }
     
     func refreshUI() {

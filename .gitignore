@@ -1,4 +1,4 @@
-/Searchify/Constants.swift
+Searchify/Constants.swift
 Keys.plist
 Key.plist
 
@@ -66,11 +66,13 @@ xcuserdata/
 *.xcscmblueprint
 
 ### Xcode Patch ###
-*.xcodeproj/*
-!*.xcodeproj/project.pbxproj
-!*.xcodeproj/xcshareddata/
-!*.xcworkspace/contents.xcworkspacedata
-/*.gcno
+**/*.xcodeproj/xcuserdata/
+**/*.xcworkspace/xcuserdata/
+**/*.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+**/*.xcworkspace/xcshareddata/*.xccheckout
+**/*.xcworkspace/xcshareddata/*.xcscmblueprint
+**/*.playground/**/timeline.xctimeline
+.idea/
 
 =======
 >>>>>>> 9b394d097cd39a6a0255202571013df273b4f8ee

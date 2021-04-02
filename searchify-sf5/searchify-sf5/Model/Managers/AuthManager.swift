@@ -101,6 +101,15 @@ final class AuthManager {
         task.resume()
     }
     
+    // MARK: - Sign Out Function
+    public func signOut(completion: (Bool) -> Void) {
+        UserDefaults.standard.setValue(nil, forKey: "access_token")
+        UserDefaults.standard.setValue(nil, forKey: "refresh_token")
+        UserDefaults.standard.setValue(nil, forKey: "expirationDate")
+        completion(true)
+        
+    }
+    
     // MARK: - Functions
     private func cacheToken(result: AuthResponse) {
         UserDefaults.standard.setValue(result.access_token,

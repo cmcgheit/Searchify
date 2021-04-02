@@ -5,6 +5,7 @@
 import UIKit
 
 class AlbumCollectionViewCell: UICollectionViewCell {
+    
     static let identifier = "AlbumCollectionViewCell"
     
     private let trackNameLabel: UILabel = {
@@ -31,13 +32,13 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        trackNameLabel.frame = CGRect(x: 10, y: 0, width: contentView.width-15, height: contentView.height/2)
-        artistNameLabel.frame = CGRect(x: 10, y: contentView.height/2, width: contentView.width-15, height: contentView.height/2)
+        trackNameLabel.frame = CGRect(x: 10, y: 0, width: contentView.width - 15, height: contentView.height/2)
+        artistNameLabel.frame = CGRect(x: 10, y: contentView.height/2, width: contentView.width - 15, height: contentView.height/2)
     }
     
     override func prepareForReuse() {
