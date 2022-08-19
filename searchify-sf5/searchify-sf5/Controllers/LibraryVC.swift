@@ -51,7 +51,7 @@ class LibraryVC: UIViewController {
 }
 
 extension LibraryVC: UIScrollViewDelegate {
-    func scrollviewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // Moves indicator
         if scrollView.contentOffset.x >= (view.width - 100) {
             libraryToggleView.update(for: .album)

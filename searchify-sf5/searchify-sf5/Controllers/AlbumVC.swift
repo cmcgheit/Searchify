@@ -77,9 +77,9 @@ class AlbumVC: UIViewController {
         APIManager.shared.getAlbumDetails(for: album) { albumResult in
             switch albumResult {
             case .success(let model):
-                break
+                print("success: \(model)")
             case .failure(let error):
-                break
+                print("error: \(error)")
             }
         }
     }
